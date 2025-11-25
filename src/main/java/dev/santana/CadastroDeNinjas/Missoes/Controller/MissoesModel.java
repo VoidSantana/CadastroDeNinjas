@@ -20,14 +20,11 @@ public class MissoesModel {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "missão")
+    @Column(name = "nome")
     private String nome;
 
-    @Column(name = "rank")
-    private RankMissoes rank;
-
     @Column(name = "dificuldade")
-    private RankMissoes dificuldade;
+    private String dificuldade;
 
     //@OneToMany Uma missao para varios ninjas
     @OneToMany(mappedBy = "missoesModel")
