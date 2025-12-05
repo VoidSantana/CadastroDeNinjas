@@ -1,6 +1,5 @@
 package dev.santana.CadastroDeNinjas.Missoes.Controller;
 
-
 import org.springframework.web.bind.annotation.*;
 
 @RestController
