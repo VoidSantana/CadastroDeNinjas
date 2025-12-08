@@ -1,5 +1,6 @@
 package dev.santana.CadastroDeNinjas.Ninjas.Controller;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.santana.CadastroDeNinjas.Missoes.Controller.MissoesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,6 +37,7 @@ public class NinjaModel {
     // @ManyToOne um ninja tem uma unica missao
     @ManyToOne
     @JoinColumn(name = "missoes_id") //Foreing Key - Chave extrangeira
+    @JsonIgnore
     private MissoesModel missoesModel;
 
 

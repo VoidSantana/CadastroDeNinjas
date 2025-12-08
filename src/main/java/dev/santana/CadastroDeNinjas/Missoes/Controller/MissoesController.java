@@ -2,18 +2,30 @@ package dev.santana.CadastroDeNinjas.Missoes.Controller;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("missoes")
 public class MissoesController {
 
+    private MissoesService missoesService;
+
+    public MissoesController(MissoesService missoesService) {
+        this.missoesService = missoesService;
+    }
+
     @GetMapping("/exibir")
-    public String exibirMissoes(){
-        return "Missao exibidas com sucesso";
+    public List<MissoesModel> exibirMissoes(){
+        return missoesService.listarMissoes();
+    }
+    @GetMapping("/exibir/{id}")
+    public MissoesModel exibirPorId(@PathVariable Long id){
+        return missoesService.listarMissoesPorId(id);
     }
 
     @PostMapping("/criar")
-    public String criarMissoes(){
-        return "Missao criada com sucesso";
+    public MissoesModel criarMissoes(@RequestBody MissoesModel missoes){
+        return missoesService.criarMissao(missoes);
     }
 
     @PutMapping("/alterar")
@@ -22,7 +34,7 @@ public class MissoesController {
     }
 
     @DeleteMapping("/deletar")
-    public String deletarMissoes(){
-        return "Missao deletada com sucesso";
+    public void deletarMissoes(@PathVariable Long id){
+        missoesService.deletarMissaoPorId(id);
     }
 }

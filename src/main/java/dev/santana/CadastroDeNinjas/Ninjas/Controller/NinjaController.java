@@ -28,8 +28,8 @@ public class NinjaController {
 
     // Adicionar Ninja (CREATE)
     @PostMapping("/criar")
-    public String criarNinja(){
-        return "Ninja criado";
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninja){
+        return ninjaService.criarNinja(ninja);
     }
 
     // Alterar dados dos ninjas (UPDATE)
@@ -39,8 +39,8 @@ public class NinjaController {
     }
 
     // Deletear Ninja (DELETE)
-    @DeleteMapping("/deletarID")
-    public String deletarPorId(){
-        return "Deletar por ID";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarPorId(@PathVariable Long id){
+        ninjaService.deletarNinjaPorId(id);
     }
 }
