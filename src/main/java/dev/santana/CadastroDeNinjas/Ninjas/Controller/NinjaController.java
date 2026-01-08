@@ -11,7 +11,7 @@ import java.util.Optional;
 @RequestMapping("ninjas")
 public class NinjaController {
 
-    private NinjaService ninjaService;
+    private final NinjaService ninjaService;
 
     public NinjaController(NinjaService ninjaService) {
         this.ninjaService = ninjaService;
@@ -48,7 +48,6 @@ public class NinjaController {
     @PutMapping("/alterar/{id}")
     public ResponseEntity<?> alterarDadosPorId(@PathVariable Long id, @RequestBody NinjaDTO ninjaAtualizado){
         NinjaDTO ninja = ninjaService.atualizarDados(id, ninjaAtualizado);
-
         if (ninja!=null){
             return ResponseEntity.ok(ninja);
         }
